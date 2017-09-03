@@ -2,7 +2,7 @@
   "name": "xway",
   "version": "1.0.0",
   "description": "Library for building xpath exspression",
-  "main": "index.js",
+  "main": "xway.umd.js",
   "babel": {
     "presets": [
       "latest",
@@ -29,6 +29,7 @@
     "url": "https://github.com/yardenShacham/Xway/issues"
   },
   "homepage": "https://github.com/yardenShacham/Xway#readme",
+  "dependencies": [],
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
@@ -39,6 +40,9 @@
     "chai": "^4.0.0-canary.1",
     "mocha": "^3.1.2",
     "rollup": "^0.36.3",
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.0.25",
+    "rollup-plugin-babel": "^2.6.1",
+    "del": "^2.2.2"
   }
 }
