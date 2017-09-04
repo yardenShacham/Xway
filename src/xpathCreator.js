@@ -43,11 +43,19 @@ export function xpathCreator(defaultXpath) {
         this.currentXpath += this.currentXpath[this.currentXpath.length - 1] === '/' ? "*" : "/*";
         return this;
     };
+    this.have = function () {
+        this.currentXpath += "//";
+        return this;
+    }
 
     this.hisParent = function () {
         this.currentXpath += `/..`;
         return this;
     };
+    this.childOf = function (elementName) {
+        this.currentXpath += `/${elementName}`;
+        return this;
+    }
 
     this.build = function () {
         return this.currentXpath;
