@@ -1,4 +1,6 @@
 import htmlTags from './htmlTags'
+import {conditionCreator} from './conditionCreator'
+
 export function xpathCreator(defaultXpath) {
     this.currentXpath = defaultXpath ? defaultXpath : "//";
     this.isOnlyStart = true;
@@ -79,6 +81,56 @@ xpathCreator.prototype.withText = function (text) {
     this.currentXpath += `[text() = "${text}"]`
     return this.getCreator();
 };
+
+xpathCreator.prototype.containText = function (text) {
+    this.currentXpath += `[contains(text(),"${text}")]`
+    return this.getCreator();
+};
+
+xpathCreator.prototype.childNumber = function (childNumber) {
+    this.currentXpath += `[${childNumber}]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.lastChild = function () {
+    this.currentXpath += `[last()]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.lastChildMinus = function (num) {
+    this.currentXpath += `[last() - ${num}]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.lastChildPlus = function (num) {
+    this.currentXpath += `[last() + ${num}]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.firstChild = function () {
+    this.currentXpath += `[first()]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.firstChildMinus = function (num) {
+    this.currentXpath += `[first() - ${num}]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.firstChildPlus = function (num) {
+    this.currentXpath += `[first() + ${num}]`;
+    return this.getCreator();
+};
+
+xpathCreator.prototype.if = function (predicate) {
+    if (predicate && typeof predicate === "string") {
+        this.currentXpath += `[${predicate}]`;
+    }
+    else if (typeof predicate === "function")
+        predicate(new conditionCreator());
+    return this.getCreator();
+};
+
 xpathCreator.prototype.withAttribute = function (attrName, attrValue) {
     this.currentXpath += `[@${attrName}="${attrValue}"]`;
     return this.getCreator();
