@@ -1,6 +1,6 @@
 {
   "name": "xway",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Library for building xpath exspression",
   "main": "xway.umd.js",
   "babel": {

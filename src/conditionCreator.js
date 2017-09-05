@@ -6,7 +6,7 @@ export function conditionCreator(currentCondition) {
 }
 
 conditionCreator.prototype.position = function () {
-    this.currentCondition += "position() "
+    this.currentCondition += "position() ";
     return this.this.getCreator();
 };
 conditionCreator.prototype.lessThen = function (lessThen) {
@@ -35,5 +35,9 @@ conditionCreator.prototype.and = function () {
 };
 conditionCreator.prototype.or = function () {
     this.currentCondition += ` or`
+    return this.this.getCreator();
+};
+conditionCreator.prototype.done = function () {
+    this.currentCondition += `]`;
     return this.this.getCreator();
 };
