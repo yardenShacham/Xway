@@ -143,7 +143,7 @@ xpathCreator.prototype.withAttribute = function (attrName, attrValue) {
 xpathCreator.prototype.withClasses = function (classList) {
     let xpathForClasses = `[`;
     for (let i = 0; i < classList.length; i++) {
-        xpathForClasses += `contains(@class,${classList[i]})`;
+        xpathForClasses += `contains(@class,"${classList[i]}")`;
         if (i + 1 < classList.length)
             xpathForClasses += ' and ';
     }
