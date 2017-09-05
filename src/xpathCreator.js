@@ -55,7 +55,12 @@ export function xpathCreator(defaultXpath) {
         return this;
     };
     this.childOf = function (elementName) {
-        this.currentXpath += `/${elementName}`;
+        if (this.currentXpath[this.currentXpath.length - 1] === '/' && this.currentXpath[this.currentXpath.length - 2] === '/') {
+            this.currentXpath += `${elementName}`;
+        }
+        else
+            this.currentXpath += `/${elementName}`;
+
         return this;
     }
 
